@@ -19,13 +19,13 @@ namespace курсовая_опбд
             InitializeComponent();
             _context = context;
             _user = user;
-            var menu = from s in _context.Menus select s;
+            var menu = from s in _context.Users select s;
             dataGridView1.DataSource = menu.ToList();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Reserv res = new Reserv();
+            Reserv res = new Reserv(new AppDbContext(),_user);
             res.ShowDialog();
         }
 
@@ -40,7 +40,7 @@ namespace курсовая_опбд
         {
             if (comboBox1.SelectedItem == null)
             {
-                var menu = from s in _context.Menus select s;
+                var menu = from s in _context.Users select s;
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = menu.ToList();
             }
@@ -50,6 +50,11 @@ namespace курсовая_опбд
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = menu.ToList();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            comboBox1.SelectedItem = null;
         }
     }
 }

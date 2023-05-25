@@ -41,6 +41,10 @@ namespace курсовая_опбд
 
         private void button4_Click(object sender, EventArgs e)
         {
+            tables tables = new tables(new AppDbContext());
+            Hide();
+            tables.ShowDialog();
+            Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
